@@ -7,7 +7,7 @@ podTemplate(label: 'mypod', containers: [
           checkout scm
           git url: 'git://github.com/pblaas/app1.git'
           container('docker'){
-           sh "dir"
+           sh "ls"
             stage ('Build Docker image'){
               //sh 'which docker; docker version'
               def imageName = "${env.DOCKERHUB_USER}/${env.CONTAINER_IMAGE}:${env.BUILD_TAG}"
