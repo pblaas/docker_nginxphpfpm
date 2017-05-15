@@ -9,7 +9,7 @@ podTemplate(label: 'mypod', containers: [
             stage ('Build Docker image'){
               sh 'which docker; docker version'
               def imageName = "${env.DOCKERHUB_USER}/${env.CONTAINER_IMAGE}:${env.BUILD_TAG}"
-              sh "git clone https://github.com/pblaas/app1.git app"
+              git url: 'git://github.com/pblaas/app1.git app'
               sh "docker build -t ${imageName}  ."
               def img= docker.image(imageName)
 
