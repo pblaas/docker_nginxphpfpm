@@ -5,7 +5,9 @@ podTemplate(label: 'mypod', containers: [
   node('mypod') {
       stage('Build and Push'){
           checkout scm
-          git url: 'git://github.com/pblaas/app1.git'
+          dir('app'){
+           git url: 'git://github.com/pblaas/app1.git'
+          }
           container('docker'){
            sh "ls"
             stage ('Build Docker image'){
