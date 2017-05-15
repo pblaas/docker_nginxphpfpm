@@ -29,7 +29,7 @@ podTemplate(label: 'mypod', containers: [
            dir('app'){
              git url: 'git://github.com/pblaas/app1.git'
            }
-           git url: 'git@github.com:pblaas/phpfpm.git'
+           git url: 'git://github.com:pblaas/phpfpm.git'
             stage ('Build Docker image'){
               //sh 'which docker; docker version'
               def imageName = "${env.DOCKERHUB_USER}/${env.PHPFPMCONTAINER_IMAGE}:${env.BUILD_TAG}"
