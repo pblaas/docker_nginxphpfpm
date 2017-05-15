@@ -4,12 +4,15 @@ podTemplate(label: 'mypod', containers: [
 
   node('mypod') {
       stage('Build and Push'){
+          dir('app1'){
+          	git url: 'git://github.com/pblaas/app1.git'
+	  }
           checkout scm
           container('docker'){
             stage ('Build Docker image'){
-              sh 'which docker; docker version'
+              //sh 'which docker; docker version'
               def imageName = "${env.DOCKERHUB_USER}/${env.CONTAINER_IMAGE}:${env.BUILD_TAG}"
-              git url: 'git://github.com/pblaas/app1.git app'
+              sh ('ls')
               sh "docker build -t ${imageName}  ."
               def img= docker.image(imageName)
 
